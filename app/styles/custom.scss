@@ -1,0 +1,70 @@
+$color_1: #777;
+
+body {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+.header {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: .05rem solid #e5e5e5;
+	h3 {
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 3rem;
+	}
+}
+.marketing {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	margin: 3rem 0;
+	p {
+		&+h4 {
+			margin-top: 1.5rem;
+		}
+	}
+}
+.footer {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	padding-top: 1.5rem;
+	color: $color_1;
+	border-top: .05rem solid #e5e5e5;
+}
+.container-narrow {
+	>hr {
+		margin: 2rem 0;
+	}
+}
+.jumbotron {
+	text-align: center;
+	border-bottom: .05rem solid #e5e5e5;
+	.btn {
+		padding: .75rem 1.5rem;
+		font-size: 1.5rem;
+	}
+}
+@media (min-width: 48em) {
+	.container {
+		max-width: 46rem;
+	}
+}
+@media screen and (min-width: 48em) {
+	.header {
+		padding-right: 0;
+		padding-left: 0;
+		margin-bottom: 2rem;
+	}
+	.marketing {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.footer {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.jumbotron {
+		border-bottom: 0;
+	}
+}
