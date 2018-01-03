@@ -50,6 +50,7 @@ module.exports = {
               use: [
                 "style-loader",
                 "css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]",
+                "postcss-loader",
                 "sass-loader"
               ]
           }
