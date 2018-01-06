@@ -1,13 +1,20 @@
 import React from 'react';
-import App from './components/app';
 import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import App from './components/app';
+import reducer from './reducers';
 
-window.$ = window.jQuery = require('jquery');
-window.Popper = require('popper.js');
 import 'bootstrap';
 import './styles/index.scss';
+window.$ = window.jQuery = require('jquery');
+window.Popper = require('popper.js');
+
+const store = createStore(reducer);
 
 render(
-  <App/>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

@@ -4,18 +4,16 @@ import PropTypes from 'prop-types';
 class CurrencyInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currency: props.initialCurrency || 'USD',
-      value: 1
-    }
-
-    this.handleChange = this.handleChange.bind(this);
+    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+    this.handleValueChange = this.handleValueChange.bind(this);
   }
 
-  handleChange(event) {
-    var change = {};
-    change[event.target.name] = event.target.value;
-    this.setState(change);
+  handleCurrencyChange(event) {
+    this.props.changeValue(this.props.name, event.target.value, this.props.fields.value);
+  }
+
+  handleValueChange(event) {
+    this.props.changeValue(this.props.name, this.props.fields.currency, event.target.value);
   }
 
   render() {
@@ -24,15 +22,15 @@ class CurrencyInput extends React.Component {
         <div className="form-row align-items-center">
           <div className="col-auto">
             <select name="currency" className="custom-select mr-2 mb-2"
-              onChange={this.handleChange} value={this.state.currency}>
-              <option value="USD">USD</option>
-              <option value="GBP">GBP</option>
-              <option value="EUR">EUR</option>
+              onChange={this.handleCurrencyChange} value={this.props.fields.currency}>
+              {this.props.currencies.map((currency, i) =>
+                <option key={i} value={currency}>{currency}</option>
+              )}
             </select>
           </div>
           <div className="col-auto">
             <input type="text" name="value" className="form-control mr-2 mb-2"
-              onChange={this.handleChange} value = {this.state.value}/>
+              onChange={this.handleValueChange} value = {this.props.fields.value}/>
           </div>
         </div>
       </form>
@@ -41,7 +39,10 @@ class CurrencyInput extends React.Component {
 }
 
 CurrencyInput.propTypes = {
-  initialCurrency: PropTypes.string
+  name: PropTypes.string.isRequired,
+  fields: PropTypes.object.isRequired,
+  currencies: PropTypes.array.isRequired,
+  changeValue: PropTypes.function,
 };
 
 export default CurrencyInput
