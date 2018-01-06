@@ -11,6 +11,10 @@ class App extends React.Component {
         <main role="main">
           <h1>Hello World</h1>
         </main>
+
+        <footer className="footer">
+          &copy; Dmitry Zeldin, 2017
+        </footer>
       </div>
     )
   }
