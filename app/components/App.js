@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrencyInput from './CurrencyInput';
 
 class App extends React.Component {
   render() {
@@ -9,11 +10,20 @@ class App extends React.Component {
         </header>
 
         <main role="main">
-          <h1>Hello World</h1>
+          <div className="row justify-content-center">
+            <div className="col col-sm-auto">
+              <CurrencyInput initialCurrency="USD"/>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col col-sm-auto">
+              <CurrencyInput initialCurrency="EUR"/>
+            </div>
+          </div>
         </main>
 
         <footer className="footer">
-          &copy; Dmitry Zeldin, 2017
+          &copy; Dmitry Zeldin, 2018
         </footer>
       </div>
     )

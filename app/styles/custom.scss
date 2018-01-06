@@ -1,52 +1,35 @@
-$color_1: #777;
-
+$footer-width: 60px;
 body {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
+	margin-bottom: 60px;
 }
 .header {
 	padding-right: 1rem;
 	padding-left: 1rem;
 	padding-bottom: 1rem;
-	border-bottom: .05rem solid #e5e5e5;
+	margin-bottom: 2rem;
+	border-bottom: .05rem solid $gray-200;
 	h3 {
 		margin-top: 0;
 		margin-bottom: 0;
 		line-height: 3rem;
 	}
 }
-.marketing {
-	padding-right: 1rem;
-	padding-left: 1rem;
-	margin: 3rem 0;
-	p {
-		&+h4 {
-			margin-top: 1.5rem;
-		}
-	}
-}
 .footer {
-	padding-right: 1rem;
-	padding-left: 1rem;
-	padding-top: 1.5rem;
-	color: $color_1;
-	border-top: .05rem solid #e5e5e5;
-}
-.container-narrow {
-	>hr {
-		margin: 2rem 0;
-	}
-}
-.jumbotron {
-	text-align: center;
-	border-bottom: .05rem solid #e5e5e5;
-	.btn {
-		padding: .75rem 1.5rem;
-		font-size: 1.5rem;
-	}
+	position: absolute;
+  bottom: 0;
+  width: 100%;
+	height: $footer-width;
+  line-height: $footer-width;
+	color: $gray-700;
+	border-top: .05rem solid $gray-200;
 }
 @media (min-width: 48em) {
 	.container {
+		max-width: 46rem;
+	}
+	.footer {
 		max-width: 46rem;
 	}
 }
@@ -54,17 +37,9 @@ body {
 	.header {
 		padding-right: 0;
 		padding-left: 0;
-		margin-bottom: 2rem;
-	}
-	.marketing {
-		padding-right: 0;
-		padding-left: 0;
 	}
 	.footer {
 		padding-right: 0;
 		padding-left: 0;
-	}
-	.jumbotron {
-		border-bottom: 0;
 	}
 }
