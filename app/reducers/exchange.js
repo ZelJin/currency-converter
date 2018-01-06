@@ -25,7 +25,7 @@ const generateExchangeRates = (() => {
   });
 });
 
-export default function converter(state = initialState, action) {
+export default function exchange(state = initialState, action) {
   switch(action.type) {
     case CHANGE_CURRENCY:
       return state
