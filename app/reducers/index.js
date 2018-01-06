@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import converter from './converter';
+import exchange from './exchange';
 
 const rootReducer = combineReducers({
-  converter
+  exchange
 });
 
 export default rootReducer;
