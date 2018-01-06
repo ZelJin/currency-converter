@@ -1,4 +1,4 @@
-import { CHANGE_CURRENCY, CHANGE_VALUE } from '../constants/ActionTypes';
+import { CHANGE_VALUE } from '../constants/ActionTypes';
 import { CURRENCIES, EXCHANGE_RATES } from '../constants/Currencies';
 
 const initialState = {
