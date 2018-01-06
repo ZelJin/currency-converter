@@ -16,8 +16,6 @@ const initialState = {
 
 export default function exchange(state = initialState, action) {
   switch(action.type) {
-    case CHANGE_CURRENCY:
-      return state
     case CHANGE_VALUE:
       return state
     default:
