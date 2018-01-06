@@ -1,5 +1,5 @@
 import { CHANGE_CURRENCY, CHANGE_VALUE } from '../constants/ActionTypes';
-import { CURRENCIES } from '../constants/Currencies';
+import { CURRENCIES, EXCHANGE_RATES } from '../constants/Currencies';
 
 const initialState = {
   base: {
@@ -11,19 +11,8 @@ const initialState = {
     value: 1
   },
   currencies: CURRENCIES,
-  exchangeRates: generateExchangeRates()
+  exchangeRates: EXCHANGE_RATES,
 }
-
-const generateExchangeRates = (() => {
-  var rootRates = {};
-  CURRENCIES.forEach(baseCurrency => {
-    var baseRates = {};
-    CURRENCIES.forEach(quoteCurrency => {
-      baseRates[quoteCurrency] = 1;
-    });
-    rootRates[baseCurrency] = baseRates;
-  });
-});
 
 export default function exchange(state = initialState, action) {
   switch(action.type) {
