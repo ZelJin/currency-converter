@@ -9,11 +9,11 @@ class CurrencyInput extends React.Component {
   }
 
   handleCurrencyChange(event) {
-    this.props.changeValue(this.props.name, event.target.value, this.props.fields.value);
+    this.props.changeCurrency(this.props.name, event.target.value);
   }
 
   handleValueChange(event) {
-    this.props.changeValue(this.props.name, this.props.fields.currency, event.target.value);
+    this.props.changeValue(this.props.name, event.target.value);
   }
 
   render() {
@@ -30,7 +30,7 @@ class CurrencyInput extends React.Component {
           </div>
           <div className="col-auto">
             <input type="number" step="0.01" min="0" max="1000" className="form-control mr-2 mb-2"
-              onChange={this.handleValueChange} value = {this.props.fields.value}/>
+              onChange={this.handleValueChange} value ={this.props.fields.value}/>
           </div>
         </div>
       </form>
@@ -43,6 +43,7 @@ CurrencyInput.propTypes = {
   fields: PropTypes.object.isRequired,
   currencies: PropTypes.array.isRequired,
   changeValue: PropTypes.function,
+  changeCurrency: PropTypes.function,
 };
 
 export default CurrencyInput

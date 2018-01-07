@@ -21,14 +21,14 @@ class App extends React.Component {
         <main role="main">
           <div className="row justify-content-center">
             <div className="col col-sm-auto">
-              <CurrencyInput name="base" fields={this.props.base}
-                currencies={this.props.currencies} changeValue={this.props.actions.changeValue} />
+              <CurrencyInput name="base" fields={this.props.base} currencies={this.props.currencies}
+                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency} />
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col col-sm-auto">
-              <CurrencyInput name="quote" fields={this.props.quote}
-                currencies={this.props.currencies} changeValue={this.props.actions.changeValue} />
+              <CurrencyInput name="quote" fields={this.props.quote} currencies={this.props.currencies}
+                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency} />
             </div>
           </div>
         </main>
