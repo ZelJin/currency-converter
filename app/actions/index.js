@@ -1,8 +1,8 @@
 import * as types from '../constants/ActionTypes';
 
-export const changeValue = (name, currency, value) => ({
+export const changeValue = (emitter, currency, value) => ({
   type: types.CHANGE_VALUE,
-  name: name,
+  emitter: emitter,
   currency: currency,
   value: value,
 });

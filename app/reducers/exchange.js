@@ -14,24 +14,48 @@ const initialState = {
   exchangeRates: EXCHANGE_RATES,
 }
 
+const isValidAmount = value => (
+  /^\d+(\.|,)?(\d{0,2})?$/.test(value)
+);
+
+const getCurrentExchangeRate = state => (
+  state.exchangeRates[state.base.currency][state.quote.currency]
+);
+
+const calculateQuoteValue = state => {
+  const rate = getCurrentExchangeRate(state);
+  state.quote.value = (parseFloat(state.base.value) * rate).toFixed(2);
+};
+
+const calculateBaseValue = state => {
+  const rate = getCurrentExchangeRate(state);
+  state.base.value = (parseFloat(state.quote.value) / rate).toFixed(2);
+};
+
 export default function exchange(state = initialState, action) {
   switch(action.type) {
     case CHANGE_VALUE:
+      if (!isValidAmount(action.value)) {
+        return state
+      }
+
       var newState = Object.assign({}, state);
-      newState[action.name] = {
+      newState[action.emitter] = {
         currency: action.currency,
         value: action.value
       }
-      if (isNaN(parseFloat(action.value))) {
-        return newState
+
+      switch(action.emitter) {
+        case 'base':
+          calculateQuoteValue(newState);
+          break
+        case 'quote':
+          calculateBaseValue(newState);
+          break
+        default:
+          console.error('Unknown emitter!');
       }
-      var rate = newState.exchangeRates[newState.base.currency][newState.quote.currency];
-      if (action.name == 'base') {
-        newState.quote.value = parseFloat(newState.base.value) * rate;
-      } else {
-        newState.base.value = parseFloat(newState.quote.value) / rate;
-      }
-      return newState
+      return newState;
     default:
       return state
   }
