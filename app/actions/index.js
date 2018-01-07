@@ -11,3 +11,7 @@ export const changeCurrency = (emitter, currency) => ({
   emitter: emitter,
   currency: currency,
 });
+
+export const updateExchangeRates = () => ({
+  type: types.UPDATE_EXCHANGE_RATES,
+});
