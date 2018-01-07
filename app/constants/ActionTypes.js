@@ -1,1 +1,2 @@
 export const CHANGE_VALUE = 'CHANGE_VALUE';
+export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
