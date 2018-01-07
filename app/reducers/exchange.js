@@ -1,4 +1,4 @@
-import { CHANGE_VALUE } from '../constants/ActionTypes';
+import { CHANGE_VALUE, CHANGE_CURRENCY } from '../constants/ActionTypes';
 import { CURRENCIES, EXCHANGE_RATES } from '../constants/Currencies';
 
 const initialState = {
@@ -22,40 +22,51 @@ const getCurrentExchangeRate = state => (
   state.exchangeRates[state.base.currency][state.quote.currency]
 );
 
-const calculateQuoteValue = state => {
-  const rate = getCurrentExchangeRate(state);
-  state.quote.value = (parseFloat(state.base.value) * rate).toFixed(2);
-};
+const calculateQuoteValue = state => ({
+  base: state.base,
+  quote: {
+    currency: state.quote.currency,
+    value: (parseFloat(state.base.value) * getCurrentExchangeRate(state)).toFixed(2),
+  },
+  currencies: state.currencies,
+  exchangeRates: state.exchangeRates,
+});
 
-const calculateBaseValue = state => {
-  const rate = getCurrentExchangeRate(state);
-  state.base.value = (parseFloat(state.quote.value) / rate).toFixed(2);
-};
+const calculateBaseValue = state => ({
+  base: {
+    currency: state.base.currency,
+    value: (parseFloat(state.quote.value) / getCurrentExchangeRate(state)).toFixed(2)
+  },
+  quote: state.quote,
+  currencies: state.currencies,
+  exchangeRates: state.exchangeRates,
+});
 
 export default function exchange(state = initialState, action) {
+  var tempState = undefined;
   switch(action.type) {
     case CHANGE_VALUE:
       if (!isValidAmount(action.value)) {
         return state
       }
 
-      var newState = Object.assign({}, state);
-      newState[action.emitter] = {
-        currency: action.currency,
-        value: action.value
-      }
+      tempState = Object.assign({}, state);
+      tempState[action.emitter].value = action.value;
 
       switch(action.emitter) {
         case 'base':
-          calculateQuoteValue(newState);
-          break
+          return calculateQuoteValue(tempState);
         case 'quote':
-          calculateBaseValue(newState);
-          break
+          return calculateBaseValue(tempState);
         default:
           console.error('Unknown emitter!');
+          return
       }
-      return newState;
+    case CHANGE_CURRENCY:
+      tempState = Object.assign({}, state);
+      tempState[action.emitter].currency = action.currency;
+
+      return calculateQuoteValue(tempState);
     default:
       return state
   }
