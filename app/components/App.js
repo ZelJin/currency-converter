@@ -7,6 +7,18 @@ import ExchangeRateDisplay from './ExchangeRateDisplay';
 import * as Actions from '../actions'
 
 class App extends React.Component {
+
+  updateExchangeRates() {
+    this.props.actions.updateExchangeRates(Object.keys(this.props.currencies));
+  }
+
+  componentDidMount() {
+    this.updateExchangeRates();
+    setInterval(() => {
+      this.updateExchangeRates();
+    }, 10000)
+  }
+
   render() {
     return (
       <div className="container">

@@ -1,4 +1,4 @@
-import { CHANGE_VALUE, CHANGE_CURRENCY } from '../constants/ActionTypes';
+import { CHANGE_VALUE, CHANGE_CURRENCY, RECEIVE_EXCHANGE_RATES } from '../constants/ActionTypes';
 import { CURRENCIES, EXCHANGE_RATES } from '../constants/Currencies';
 
 const initialState = {
@@ -23,23 +23,19 @@ const getCurrentExchangeRate = state => (
 );
 
 const calculateQuoteValue = state => ({
-  base: state.base,
+  ...state,
   quote: {
     currency: state.quote.currency,
     value: (parseFloat(state.base.value) * getCurrentExchangeRate(state)).toFixed(2),
   },
-  currencies: state.currencies,
-  exchangeRates: state.exchangeRates,
 });
 
 const calculateBaseValue = state => ({
+  ...state,
   base: {
     currency: state.base.currency,
-    value: (parseFloat(state.quote.value) / getCurrentExchangeRate(state)).toFixed(2)
+    value: (parseFloat(state.quote.value) / getCurrentExchangeRate(state)).toFixed(2),
   },
-  quote: state.quote,
-  currencies: state.currencies,
-  exchangeRates: state.exchangeRates,
 });
 
 export default function exchange(state = initialState, action) {
@@ -50,7 +46,7 @@ export default function exchange(state = initialState, action) {
         return state
       }
 
-      tempState = Object.assign({}, state);
+      tempState = {...state};
       tempState[action.emitter].value = action.value;
 
       switch(action.emitter) {
@@ -63,10 +59,18 @@ export default function exchange(state = initialState, action) {
           return
       }
     case CHANGE_CURRENCY:
-      tempState = Object.assign({}, state);
+      tempState = {...state};
       tempState[action.emitter].currency = action.currency;
 
       return calculateQuoteValue(tempState);
+    case RECEIVE_EXCHANGE_RATES:
+      console.log('Updating exchange rates');
+      tempState = {...state};
+      tempState[action.rates.base] = {
+        ...tempState[action.rates.base],
+        ...action.rates.rates,
+      }
+      return tempState;
     default:
       return state
   }
