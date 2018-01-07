@@ -21,7 +21,7 @@ class CurrencyInput extends React.Component {
       <form className="form">
         <div className="form-row align-items-center">
           <div className="col-auto">
-            <select name="currency" className="custom-select mr-2 mb-2"
+            <select className="custom-select mr-2 mb-2"
               onChange={this.handleCurrencyChange} value={this.props.fields.currency}>
               {this.props.currencies.map((currency, i) =>
                 <option key={i} value={currency}>{currency}</option>
@@ -29,7 +29,7 @@ class CurrencyInput extends React.Component {
             </select>
           </div>
           <div className="col-auto">
-            <input type="text" name="value" className="form-control mr-2 mb-2"
+            <input type="number" step="0.01" min="0" max="1000" className="form-control mr-2 mb-2"
               onChange={this.handleValueChange} value = {this.props.fields.value}/>
           </div>
         </div>
