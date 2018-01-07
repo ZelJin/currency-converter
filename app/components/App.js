@@ -7,11 +7,6 @@ import ExchangeRateDisplay from './ExchangeRateDisplay';
 import * as Actions from '../actions'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
   render() {
     return (
       <div className="container">
