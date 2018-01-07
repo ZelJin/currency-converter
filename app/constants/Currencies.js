@@ -12,20 +12,21 @@ export const CURRENCIES = {
     symbol: '£',
   },
 };
+// Dummy exchange rates for testing
 export const EXCHANGE_RATES = {
   'USD': {
     'USD': 1,
-    'EUR': 0.83022,
-    'GBP': 0.73792,
+    'EUR': 4,
+    'GBP': 3,
   },
   'EUR': {
-    'USD': 1.2045,
+    'USD': 2,
     'EUR': 1,
-    'GBP': 0.88883,
+    'GBP': 3,
   },
   'GBP': {
-    'USD': 1.3552,
-    'EUR': 1.1251,
+    'USD': 2,
+    'EUR': 3,
     'GBP': 1,
   },
 };

@@ -64,13 +64,13 @@ export default function exchange(state = initialState, action) {
 
       return calculateQuoteValue(tempState);
     case RECEIVE_EXCHANGE_RATES:
-      console.log('Updating exchange rates');
+      console.log('Updating exchange rates...');
       tempState = {...state};
-      tempState[action.rates.base] = {
-        ...tempState[action.rates.base],
+      tempState.exchangeRates[action.rates.base] = {
+        ...tempState.exchangeRates[action.rates.base],
         ...action.rates.rates,
       }
-      return tempState;
+      return calculateQuoteValue(tempState);
     default:
       return state
   }
