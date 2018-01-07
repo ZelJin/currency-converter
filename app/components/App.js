@@ -23,19 +23,23 @@ class App extends React.Component {
           <div className="row justify-content-center">
             <div className="col col-sm-auto">
               <CurrencyInput name="base" fields={this.props.base} currencies={this.props.currencies}
-                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency} />
+                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency}
+              />
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col col-sm-auto">
               <CurrencyInput name="quote" fields={this.props.quote} currencies={this.props.currencies}
-                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency} />
+                changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency}
+              />
             </div>
           </div>
           <div className="row justify-content-center mt-2 mb-2">
             <div className="col col-sm-auto">
-              <ExchangeRateDisplay baseCurrency={this.props.base.currency}
-                quoteCurrency={this.props.quote.currency} exchangeRates={this.props.exchangeRates} />
+              <ExchangeRateDisplay exchangeRates={this.props.exchangeRates}
+                baseCurrency={this.props.currencies[this.props.base.currency]}
+                quoteCurrency={this.props.currencies[this.props.quote.currency]}
+              />
             </div>
           </div>
         </main>

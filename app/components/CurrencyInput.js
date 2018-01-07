@@ -30,7 +30,8 @@ class CurrencyInput extends React.Component {
           </div>
           <div className="col-auto">
             <input type="number" step="0.01" min="0" max="1000" className="form-control mr-2 mb-2"
-              onChange={this.handleValueChange} value ={this.props.fields.value}/>
+              onChange={this.handleValueChange} value ={this.props.fields.value}
+            />
           </div>
         </div>
       </form>
