@@ -44,7 +44,7 @@ class App extends React.Component {
 App.propTypes = {
   base: PropTypes.object.isRequired,
   quote: PropTypes.object.isRequired,
-  currencies: PropTypes.array.isRequired,
+  currencies: PropTypes.object.isRequired,
   exchangeRates: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
 };

@@ -3,11 +3,11 @@ import { CURRENCIES, EXCHANGE_RATES } from '../constants/Currencies';
 
 const initialState = {
   base: {
-    currency: CURRENCIES[0],
+    currency: Object.keys(CURRENCIES)[0],
     value: 1
   },
   quote: {
-    currency: CURRENCIES[0],
+    currency: Object.keys(CURRENCIES)[0],
     value: 1
   },
   currencies: CURRENCIES,

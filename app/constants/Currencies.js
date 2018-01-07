@@ -1,4 +1,17 @@
-export const CURRENCIES = ['USD', 'EUR', 'GBP'];
+export const CURRENCIES = {
+  'USD': {
+    code: 'USD',
+    symbol: '$',
+  },
+  'EUR': {
+    code: 'EUR',
+    symbol: '€',
+  },
+  'GBP': {
+    code: 'GBP',
+    symbol: '£',
+  },
+};
 export const EXCHANGE_RATES = {
   'USD': {
     'USD': 1,
@@ -15,4 +28,4 @@ export const EXCHANGE_RATES = {
     'EUR': 1.1251,
     'GBP': 1,
   },
-}
+};

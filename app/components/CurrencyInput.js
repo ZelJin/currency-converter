@@ -23,7 +23,7 @@ class CurrencyInput extends React.Component {
           <div className="col-auto">
             <select className="custom-select mr-2 mb-2"
               onChange={this.handleCurrencyChange} value={this.props.fields.currency}>
-              {this.props.currencies.map((currency, i) =>
+              {Object.keys(this.props.currencies).map((currency, i) =>
                 <option key={i} value={currency}>{currency}</option>
               )}
             </select>
@@ -41,7 +41,7 @@ class CurrencyInput extends React.Component {
 CurrencyInput.propTypes = {
   name: PropTypes.string.isRequired,
   fields: PropTypes.object.isRequired,
-  currencies: PropTypes.array.isRequired,
+  currencies: PropTypes.object.isRequired,
   changeValue: PropTypes.function,
   changeCurrency: PropTypes.function,
 };
