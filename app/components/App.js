@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CurrencyInput from './CurrencyInput';
+import ExchangeRateDisplay from './ExchangeRateDisplay';
 import * as Actions from '../actions'
 
 class App extends React.Component {
@@ -29,6 +30,12 @@ class App extends React.Component {
             <div className="col col-sm-auto">
               <CurrencyInput name="quote" fields={this.props.quote} currencies={this.props.currencies}
                 changeValue={this.props.actions.changeValue} changeCurrency={this.props.actions.changeCurrency} />
+            </div>
+          </div>
+          <div className="row justify-content-center mt-2 mb-2">
+            <div className="col col-sm-auto">
+              <ExchangeRateDisplay baseCurrency={this.props.base.currency}
+                quoteCurrency={this.props.quote.currency} exchangeRates={this.props.exchangeRates} />
             </div>
           </div>
         </main>
