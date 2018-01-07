@@ -27,7 +27,7 @@ class App extends React.Component {
           </div>
           <div className="row justify-content-center">
             <div className="col col-sm-auto">
-              <CurrencyInput name="quota" fields={this.props.quote}
+              <CurrencyInput name="quote" fields={this.props.quote}
                 currencies={this.props.currencies} changeValue={this.props.actions.changeValue} />
             </div>
           </div>
